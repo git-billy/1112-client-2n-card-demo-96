@@ -1,17 +1,42 @@
 import { useState } from "react";
+import blogsData from "../data/blogData2_96";
 
-const BlogsStaticPage_96 = () => {
+const BlogsLocalJsonPage_96 = () => {
   const [name, setName] = useState("Billy");
   const [id, setId] = useState("210410196");
+
+  const [data, setDate] = useState(blogsData);
+  console.log("blog data", data);
 
   return (
     <>
       <section className="blogs">
         <div className="section-title">
-        <h2>Fetch Blogs From Static Json -- {name} {id}</h2>
+          <h2>
+            Fetch Blogs From Local Json -- {name} {id}
+          </h2>
         </div>
         <div className="blogs-center2">
-          <article className="blog">
+          {data.map((item) => {
+            const { id, img, remote_img, category, title, desc } = item;
+            return (
+              <article key={id} className="blog">
+                <img src={remote_img} alt={title} className="img blog-img" />
+                <div className="blog-content">
+                  <span>
+                    {category} <i className="fa-solid fa-mug-saucer"></i>
+                  </span>
+                  <h3>{desc}</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                  <a href="#">read more</a>
+                </div>
+              </article>
+            );
+          })}
+
+          {/* <article className="blog">
             <img
               src="./images/photo-1.jpg"
               alt="Coffee photo"
@@ -145,11 +170,11 @@ const BlogsStaticPage_96 = () => {
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
               <a href="#">read more</a>
             </div>
-          </article>
+          </article> */}
         </div>
       </section>
     </>
   );
 };
 
-export default BlogsStaticPage_96;
+export default BlogsLocalJsonPage_96;
