@@ -1,5 +1,6 @@
 import { useState } from "react";
 import blogsData from "../data/blogData2_96";
+import Wrapper from "../assets/wrapper/Blogs_96";
 
 const BlogsLocalJsonPage_96 = () => {
   const [name, setName] = useState("Billy");
@@ -9,7 +10,7 @@ const BlogsLocalJsonPage_96 = () => {
   console.log("blog data", data);
 
   return (
-    <>
+    <Wrapper>
       <section className="blogs">
         <div className="section-title">
           <h2>
@@ -173,7 +174,7 @@ const BlogsLocalJsonPage_96 = () => {
           </article> */}
         </div>
       </section>
-    </>
+    </Wrapper>
   );
 };
 

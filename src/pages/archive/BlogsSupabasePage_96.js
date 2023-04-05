@@ -1,52 +1,47 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import { supabase } from "../db/clientSupabase";
-import Wrapper from "../assets/wrapper/Blogs_96";
-import { useDemoContext_96 } from "../context/DemoContext_96";
+import { supabase } from "../db/clientSupabase";
 
 // import blogsData from "../data/blogData2_96";
 // let api_url = `http://localhost:5001/api/card2_96`;
 // let api_url = `https://one112-server-card-demo-96.onrender.com/api/card2_96`;
 
 const BlogsSupabasePage_96 = () => {
-  // const [name, setName] = useState("Billy");
-  // const [id, setId] = useState("210410196");
+  const [name, setName] = useState("Billy");
+  const [id, setId] = useState("210410196");
 
-  // const [data, setData] = useState([]);
-  // // console.log("blog data", data);
+  const [data, setData] = useState([]);
+  // console.log("blog data", data);
 
-  // const fetchBlogDataFromSupabase = async () => {
-  //   try {
-  //     let { data, error } = await supabase.from("card_96").select("*");
-  //     console.log("data", data);
+  const fetchBlogDataFromSupabase = async () => {
+    try {
+      let { data, error } = await supabase.from("card_96").select("*");
+      console.log("data", data);
 
-  //     setData(data)
+      setData(data)
+      
+      // const results = await axios.get(api_url);
+      // console.log("results", results);
+      // setData(results.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  //     // const results = await axios.get(api_url);
-  //     // console.log("results", results);
-  //     // setData(results.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchBlogDataFromSupabase();
-  // }, []);
-
-  const { pName, pId, blogs } = useDemoContext_96();
+  useEffect(() => {
+    fetchBlogDataFromSupabase();
+  }, []);
 
   return (
-    <Wrapper>
+    <>
       <section className="blogs">
         <div className="section-title">
-          <h2>Fetch Blogs From Supabase</h2>
-          <h3>
-            {pName} {pId}
-          </h3>
+          <h2>
+            Fetch Blogs From Supabase -- {name} {id}
+          </h2>
         </div>
         <div className="blogs-center2">
-          {blogs.map((item) => {
+          {data.map((item) => {
             const { id, img, remote_img, category, title, desc } = item;
             return (
               <article key={id} className="blog">
@@ -202,7 +197,7 @@ const BlogsSupabasePage_96 = () => {
           </article> */}
         </div>
       </section>
-    </Wrapper>
+    </>
   );
 };
 

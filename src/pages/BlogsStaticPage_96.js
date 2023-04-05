@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Wrapper from "../assets/wrapper/Blogs_96";
 
 const BlogsStaticPage_96 = () => {
   const [name, setName] = useState("Billy");
   const [id, setId] = useState("210410196");
 
   return (
-    <>
+    <Wrapper>
       <section className="blogs">
         <div className="section-title">
         <h2>Fetch Blogs From Static Json -- {name} {id}</h2>
@@ -148,7 +149,7 @@ const BlogsStaticPage_96 = () => {
           </article>
         </div>
       </section>
-    </>
+    </Wrapper>
   );
 };
 

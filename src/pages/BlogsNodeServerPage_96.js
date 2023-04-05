@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Wrapper from "../assets/wrapper/Blogs_96";
 // import blogsData from "../data/blogData2_96";
 
 // let api_url = `http://localhost:5001/api/card2_96`;
@@ -28,7 +29,7 @@ const BlogsNodeServerPage_96 = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <section className="blogs">
         <div className="section-title">
           <h2>
@@ -192,7 +193,7 @@ const BlogsNodeServerPage_96 = () => {
           </article> */}
         </div>
       </section>
-    </>
+    </Wrapper>
   );
 };
 
