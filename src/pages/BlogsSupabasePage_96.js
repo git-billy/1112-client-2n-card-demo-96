@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 // import { supabase } from "../db/clientSupabase";
 import Wrapper from "../assets/wrapper/Blogs_96";
-import { useDemoContext_96 } from "../context/DemoContext_96";
+// import { useDemoContext_96 } from "../context/DemoContext_96";
+import { useDemoContext_xx } from '../context/DemoContext_xx';
 
 // import blogsData from "../data/blogData2_96";
 // let api_url = `http://localhost:5001/api/card2_96`;
@@ -34,7 +35,8 @@ const BlogsSupabasePage_96 = () => {
   //   fetchBlogDataFromSupabase();
   // }, []);
 
-  const { pName, pId, blogs } = useDemoContext_96();
+  // const { pName, pId, blogs } = useDemoContext_96();
+  const { pName, pId, blogs } = useDemoContext_xx();
 
   return (
     <Wrapper>
