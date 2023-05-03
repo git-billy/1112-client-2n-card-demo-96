@@ -9,7 +9,8 @@ import { supabase } from "../db/clientSupabase";
 // let api_midprep_url = `http://localhost:5000/api/midprep_xx/overview2_xx`;
 // let api_midterm_url = `http://localhost:5000/api/mid_xx/menu_xx`;
 
-let api_midprep_url = `http://localhost:5001/api/midprep_96/overview2_96`;
+let api_midprep_url = `http://localhost:5001/api/mid_96/menu_96`;
+let api_midterm_url = `http://localhost:5001/api/mid_96/menu_96`;
 
 const initialState = {
   pName: "ChungChun Wang",
@@ -29,8 +30,9 @@ const DemoProvider_xx = ({ children }) => {
   const fetchProductDataFromNodeServer = async () => {
     try {
       const results = await axios.get(api_midprep_url);
-      console.log('product data', results.data);
-      dispatch({ type: 'GET_PRODUCTS_NODE_SUCCESS', payload: results.data });
+      // console.log("product data", results.data);
+      // dispatch({ type: "GET_PRODUCTS_NODE_SUCCESS", payload: results.data });
+      dispatch({ type: "GET_MENU_NODE_SUCCESS", payload: results.data });
     } catch (error) {
       console.log(error);
     }
@@ -40,24 +42,24 @@ const DemoProvider_xx = ({ children }) => {
     fetchProductDataFromNodeServer();
   }, []);
 
-  // const fetchMenuDataFromNodeServer = async (filter = '') => {
-  //   try {
-  //     const results = await axios.get(`${api_midterm_url}/${filter}`);
-  //     console.log('menu data', results.data);
-  //     dispatch({ type: 'GET_MENU_NODE_SUCCESS', payload: results.data });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const fetchMenuDataFromNodeServer = async (filter = "") => {
+    try {
+      const results = await axios.get(`${api_midterm_url}/${filter}`);
+      // console.log("menu data", results.data);
+      dispatch({ type: "GET_MENU_NODE_SUCCESS", payload: results.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchMenuDataFromNodeServer();
-  // }, []);
+  useEffect(() => {
+    fetchMenuDataFromNodeServer();
+  }, []);
 
-  // const changeMenuFilter = (filter) => {
-  //   console.log('filter', filter);
-  //   fetchMenuDataFromNodeServer(filter);
-  // };
+  const changeMenuFilter = (filter) => {
+    // console.log("filter", filter);
+    fetchMenuDataFromNodeServer(filter);
+  };
   // const fetchBlogDataFromSupabase = async () => {
   //   try {
   //     let { data, error } = await supabase.from("product_96").select("*");
@@ -75,8 +77,7 @@ const DemoProvider_xx = ({ children }) => {
   // }, []);
 
   return (
-    // <DemoContext_xx.Provider value={{ ...state, changeMenuFilter }}>
-    <DemoContext_xx.Provider value={{ ...state }}>
+    <DemoContext_xx.Provider value={{ ...state, changeMenuFilter }}>
       {children}
     </DemoContext_xx.Provider>
   );
