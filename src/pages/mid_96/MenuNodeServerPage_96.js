@@ -4,7 +4,8 @@ import axios from 'axios';
 
 import Wrapper from '../../assets/wrapper/mid_96/Menu_96';
 
-let api_url = 'http://localhost:5000/api/midprep_96/menu_96';
+// let api_url = 'http://localhost:5000/api/midprep_96/menu_96';
+let api_url = 'http://localhost:5001/api/mid_96/menu_96';
 
 const MenuNodeServerPage_96 = () => {
   const [name, setName] = useState('ChungChun Wang');
