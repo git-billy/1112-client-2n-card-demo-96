@@ -7,14 +7,15 @@ import { useDemoContext_xx } from "../../context/DemoContext_xx";
 
 const MenuNodeServerContextPage_96 = () => {
   const [name, setName] = useState("ChungChun Wang");
-  const [id, setId] = useState("210410196");
-  const { menu, menu2, data1, data2, changeMenuFilter } = useDemoContext_xx();
+  const [id, setId] = useState("210410196s");
+  const { menu, data1, data2, changeMenuFilter, changeMenuFilterSupabase } =
+    useDemoContext_xx();
 
   return (
     <Wrapper>
       <section className="menu">
         <div className="title">
-          <h2>our menu - Node Server Context</h2>
+          <h2>our menu - Supabse Server Context</h2>
           <h4>
             {name} {id}
           </h4>
@@ -25,7 +26,7 @@ const MenuNodeServerContextPage_96 = () => {
             type="button"
             className="filter-btn"
             data-id="all"
-            onClick={() => changeMenuFilter("")}
+            onClick={() => changeMenuFilterSupabase("")}
           >
             all
           </button>
@@ -33,7 +34,7 @@ const MenuNodeServerContextPage_96 = () => {
             type="button"
             className="filter-btn"
             data-id="breakfast"
-            onClick={() => changeMenuFilter("breakfast")}
+            onClick={() => changeMenuFilterSupabase("breakfast")}
           >
             breakfast
           </button>
@@ -41,7 +42,7 @@ const MenuNodeServerContextPage_96 = () => {
             type="button"
             className="filter-btn"
             data-id="lunch"
-            onClick={() => changeMenuFilter("lunch")}
+            onClick={() => changeMenuFilterSupabase("lunch")}
           >
             lunch
           </button>
@@ -49,7 +50,7 @@ const MenuNodeServerContextPage_96 = () => {
             type="button"
             className="filter-btn"
             data-id="dessert"
-            onClick={() => changeMenuFilter("dessert")}
+            onClick={() => changeMenuFilterSupabase("dessert")}
           >
             dessert
           </button>
@@ -57,13 +58,13 @@ const MenuNodeServerContextPage_96 = () => {
             type="button"
             className="filter-btn"
             data-id="shakes"
-            onClick={() => changeMenuFilter("shakes")}
+            onClick={() => changeMenuFilterSupabase("shakes")}
           >
             shakes
           </button>
         </div>
         <div className="section-center">
-          {menu2.map((item) => {
+          {menu.map((item) => {
             const { id, title, category, price, img, descrip } = item;
             return (
               <article key={id} className="menu-item">

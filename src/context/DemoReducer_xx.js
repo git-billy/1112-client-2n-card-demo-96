@@ -18,6 +18,13 @@ const DemoReducer_xx = (state, action) => {
     };
   }
 
+  if (action.type === 'GET_MENU_NODE_SUCCESS2') {
+    return {
+      ...state,
+      menu2: action.payload,
+    };
+  }
+
   if (action.type === 'CHANGE_MENU_FILTER') {
     const filter = action.payload === 'all' ? '' : action.payload;
     return {

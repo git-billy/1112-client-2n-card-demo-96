@@ -20,6 +20,7 @@ const initialState = {
   data1: [],
   data2: [],
   menu: [],
+  menu2: [],
 };
 
 const DemoContext_xx = React.createContext();
@@ -32,7 +33,7 @@ const DemoProvider_xx = ({ children }) => {
       const results = await axios.get(api_midprep_url);
       // console.log("product data", results.data);
       // dispatch({ type: "GET_PRODUCTS_NODE_SUCCESS", payload: results.data });
-      dispatch({ type: "GET_MENU_NODE_SUCCESS", payload: results.data });
+      dispatch({ type: "GET_MENU_NODE_SUCCESS2", payload: results.data });
     } catch (error) {
       console.log(error);
     }
@@ -45,8 +46,8 @@ const DemoProvider_xx = ({ children }) => {
   const fetchMenuDataFromNodeServer = async (filter = "") => {
     try {
       const results = await axios.get(`${api_midterm_url}/${filter}`);
-      // console.log("menu data", results.data);
-      dispatch({ type: "GET_MENU_NODE_SUCCESS", payload: results.data });
+      console.log("menu data", results.data);
+      dispatch({ type: "GET_MENU_NODE_SUCCESS2", payload: results.data });
     } catch (error) {
       console.log(error);
     }
@@ -60,24 +61,41 @@ const DemoProvider_xx = ({ children }) => {
     // console.log("filter", filter);
     fetchMenuDataFromNodeServer(filter);
   };
-  // const fetchBlogDataFromSupabase = async () => {
-  //   try {
-  //     let { data, error } = await supabase.from("product_96").select("*");
 
-  //     console.log("data", data);
-  //     dispatch({ type: "GET_BLOGS_SUPABASE_SUCCESS", payload: data });
-  //     //   setData(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const fetchBlogDataFromSupabase = async (filter = "") => {
+    try {
+      if (filter) {
+        const { data, error } = await supabase
+          .from("menu_96")
+          .select()
+          .eq("category", `${filter}`);
 
-  // useEffect(() => {
-  //   fetchBlogDataFromSupabase();
-  // }, []);
+        console.log("data", data);
+        dispatch({ type: "GET_MENU_NODE_SUCCESS", payload: data });
+      } else {
+        const { data, error } = await supabase.from("menu_96").select();
+
+        console.log("data", data);
+        dispatch({ type: "GET_MENU_NODE_SUCCESS", payload: data });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogDataFromSupabase();
+  }, []);
+
+  const changeMenuFilterSupabase = (filter) => {
+    // console.log("filter", filter);
+    fetchBlogDataFromSupabase(filter);
+  };
 
   return (
-    <DemoContext_xx.Provider value={{ ...state, changeMenuFilter }}>
+    <DemoContext_xx.Provider
+      value={{ ...state, changeMenuFilter, changeMenuFilterSupabase }}
+    >
       {children}
     </DemoContext_xx.Provider>
   );

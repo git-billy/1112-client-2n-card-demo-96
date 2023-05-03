@@ -174,6 +174,9 @@ const NavbarMegaResp2_96 = () => {
                         <li>
                           <Link to='/mid_node_context_96'>Node_Context_96</Link>
                         </li>
+                        <li>
+                          <Link to='/mid_supabase_context_96'>Supabase_Context_96</Link>
+                        </li>
                       </ul>
                     </div>
                   </li>

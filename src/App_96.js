@@ -15,6 +15,7 @@ import MenuStaticPage_96 from './pages/mid_96/MenuStaticPage_96';
 import MenuLocalJsonPage_96 from './pages/mid_96/MenuLocalJsonPage_96';
 import MenuNodeServerPage_96 from './pages/mid_96/MenuNodeServerPage_96';
 import MenuNodeServerContextPage_96 from './pages/mid_96/MenuNodeServerContextPage_96';
+import MenuSupabaseContextPage_96 from './pages/mid_96/MenuSupabaseContextPage_96';
 
 // import Navbar from "./components/NavbarResp_96";
 import Navbar from "./components/NavbarMegaResp2_96";
@@ -38,6 +39,7 @@ function App() {
         <Route path='/mid_localjson_96' element={<MenuLocalJsonPage_96 />} />
         <Route path='/mid_node_96' element={<MenuNodeServerPage_96 />} />
         <Route path='/mid_node_context_96' element={<MenuNodeServerContextPage_96 />} />
+        <Route path='/mid_supabase_context_96' element={<MenuSupabaseContextPage_96 />} />
       </Routes>
     </BrowserRouter>
   );
