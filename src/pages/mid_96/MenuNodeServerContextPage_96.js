@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 
 import Wrapper from '../../assets/wrapper/mid_96/Menu_96';
 
-import { useContext_96 } from '../../context/Context_96';
+// import { useContext_96 } from '../../context/Context_96';
+import { useDemoContext_xx } from '../../context/DemoContext_xx';
 
 const MenuNodeServerContextPage_96 = () => {
   const [name, setName] = useState('ChungChun Wang');
   const [id, setId] = useState('210410196');
-  const { menu } = useContext_96();
+  const { menu } = useDemoContext_xx();
 
   return (
     <Wrapper>
